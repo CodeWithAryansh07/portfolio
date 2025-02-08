@@ -1,10 +1,10 @@
 "use client"
 
 import React from 'react'
-import { RetroGrid } from './magicui/retro-grid'
-import { HyperText } from './magicui/hyper-text'
+import { RetroGrid } from '@/components/magicui/retro-grid'
+import { HyperText } from '@/components/magicui/hyper-text'
 import { motion } from 'framer-motion'
-import { InteractiveHoverButton } from './magicui/interactive-hover-button'
+import { InteractiveHoverButton } from '@/components/magicui/interactive-hover-button'
 import { BrainCircuit as Circuit, Cpu, Database } from 'lucide-react'
 
 const Hero = () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import crossStatic from '@/assets/cross.png'
 import Image from 'next/image'
-import { HyperText } from './magicui/hyper-text'
+import { HyperText } from '@/components/magicui/hyper-text'
 
 const Navbar = () => {
 
