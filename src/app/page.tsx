@@ -1,6 +1,8 @@
 "use client"
 
 import Bento from "@/components/Bento";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import React from "react";
@@ -11,6 +13,7 @@ import React from "react";
 
 export default function Home() {
 
+  const [open, setOpen] = React.useState(false);
 
   return (
     // <div id='canvas-container' style={{ width: '100vw', height: '100vh' }}>
@@ -25,9 +28,15 @@ export default function Home() {
     // </div>
     // <HyperText>Hover me!</HyperText>
     <>
-      <Navbar/>
-      <Hero />
-      <Bento />
+      <Navbar open={open} setOpen={setOpen} />
+      {!open && (
+        <>
+          <Hero />
+          <Bento />
+          <Contact />
+          <Footer />
+        </>
+      )}
     </>
   );
 }

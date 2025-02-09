@@ -1,20 +1,14 @@
-/* eslint-disable react/no-unescaped-entities */
-
-import Globe from 'react-globe.gl'
-import Button from '../components/Button.jsx'
-import { useState } from 'react'
-import Grid1 from '@/assets/grid1.png'
-import Grid2 from '@/assets/grid2.png'
-import Grid3 from '@/assets/grid3.png'
-import Grid4 from '@/assets/grid4.png'
-import Copy from '@/assets/copy.svg'
-import Tick from '@/assets/tick.svg'
-import Image from 'next/image.js'
-
-import React, { forwardRef, useRef } from "react";
+import React from 'react'
+import grid1 from '@/assets/grid1.png'
+import grid5 from '@/assets/grid4.png'
+import Image from 'next/image'
+import { IconCloud } from './magicui/icon-cloud';
+import { forwardRef, useRef } from "react";
+import Globe from '@/components/magicui/globe'
 
 import { cn } from "@/lib/utils";
-import { AnimatedBeam } from "@/components/magicui/animated-beam";
+import { AnimatedBeam } from "./magicui/animated-beam";
+import { Copy } from 'lucide-react';
 
 const Circle = forwardRef<
     HTMLDivElement,
@@ -35,194 +29,38 @@ const Circle = forwardRef<
 
 Circle.displayName = "Circle";
 
-const About = () => {
-
-    const containerRef = useRef<HTMLDivElement>(null);
-    const div1Ref = useRef<HTMLDivElement>(null);
-    const div2Ref = useRef<HTMLDivElement>(null);
-    const div3Ref = useRef<HTMLDivElement>(null);
-    const div4Ref = useRef<HTMLDivElement>(null);
-    const div5Ref = useRef<HTMLDivElement>(null);
-    const div6Ref = useRef<HTMLDivElement>(null);
-    const div7Ref = useRef<HTMLDivElement>(null);
-
-    const [hasCopied, setHasCopied] = useState(false);
-
-
-    const handleCopy = () => {
-        navigator.clipboard.writeText('infoxenotech@gmail.com');
-
-        setHasCopied(true);
-
-        setTimeout(() => {
-            setHasCopied(false);
-        }, 2000);
-    }
-
-    return (
-        <section className="c-space my-20" id='about'>
-            <div className="grid xl:grid-cols-3 xl:grid-row-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
-                <div className="col-span-1 xl:row-span-3">
-                    <div className="grid-container ">
-                        <Image src={Grid1} alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
-
-                        <div>
-                            <p className="grid-headtext">We're XenoTech</p>
-                            <p className="grid-subtext">
-                                We are a team of passionate developers, designers, and creators who are dedicated to making the web a better place.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-span-1 xl:row-span-3">
-                    <div className="grid-container">
-                        <Image src={Grid2} alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain" />
-
-                        <div>
-                            <p className="grid-headtext">Tech Stack
-                            </p>
-                            <p className="grid-subtext">
-                                We use a variety of technologies to build our projects, including JavaScript, Java, React, Next.js, Node.js, Express, Spring Boot, and more.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-span-1 xl:row-span-4">
-                    <div className="grid-container">
-                        <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
-                            <Globe
-                                height={326}
-                                width={326}
-                                backgroundColor='rgba(0, 0, 0, 0.0)'
-                                backgroundImageOpacity={0.5}
-                                showAtmosphere
-                                showGraticules
-                                globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
-                                bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-                            // labelsData={[
-                            //   {lat: 40, lng: -100,
-                            //   text: "Hello",
-                            //   size: 1.5,
-                            //   color: white
-                            //   }
-                            // ]}
-                            />
-                        </div>
-                        <div>
-                            <p className="grid-headtext">We work remotely across most timezones</p>
-                            <p className='grid-subtext'>We work with clients from all around the world. We love to build websites with great user experiences.</p>
-                            <Button name="contact me" isBeam={true} containerClass="w-full mt-10" />
-                        </div>
-                    </div>
-                </div>
-                <div className='xl:col-span-2 xl:row-span-3'>
-                    <div className='grid-container'>
-                        {/* <Image src={Grid3} alt='grid-3' className='w-full sm:h-[266px] h-fit object-contain' /> */}
-                        <div
-                            className="relative flex h-[266px] w-full items-center justify-center py-2 rounded-lg md:shadow-xl"
-                            ref={containerRef}
-                        >
-                            <div className="flex size-full max-h-[200px] max-w-lg flex-col items-stretch justify-between gap-10">
-                                <div className="flex flex-row items-center justify-between">
-                                    <Circle ref={div1Ref}>
-                                        <Icons.googleDrive />
-                                    </Circle>
-                                    <Circle ref={div5Ref}>
-                                        <Icons.googleDocs />
-                                    </Circle>
-                                </div>
-                                <div className="flex flex-row items-center justify-between">
-                                    <Circle ref={div2Ref}>
-                                        <Icons.notion />
-                                    </Circle>
-                                    <Circle ref={div4Ref} className="size-16">
-                                        <Icons.openai />
-                                    </Circle>
-                                    <Circle ref={div6Ref}>
-                                        <Icons.zapier />
-                                    </Circle>
-                                </div>
-                                <div className="flex flex-row items-center justify-between">
-                                    <Circle ref={div3Ref}>
-                                        <Icons.whatsapp />
-                                    </Circle>
-                                    <Circle ref={div7Ref}>
-                                        <Icons.messenger />
-                                    </Circle>
-                                </div>
-                            </div>
-
-                            <AnimatedBeam
-                                containerRef={containerRef}
-                                fromRef={div1Ref}
-                                toRef={div4Ref}
-                                curvature={-75}
-                                endYOffset={-10}
-                            />
-                            <AnimatedBeam
-                                containerRef={containerRef}
-                                fromRef={div2Ref}
-                                toRef={div4Ref}
-                            />
-                            <AnimatedBeam
-                                containerRef={containerRef}
-                                fromRef={div3Ref}
-                                toRef={div4Ref}
-                                curvature={75}
-                                endYOffset={10}
-                            />
-                            <AnimatedBeam
-                                containerRef={containerRef}
-                                fromRef={div5Ref}
-                                toRef={div4Ref}
-                                curvature={-75}
-                                endYOffset={-10}
-                                reverse
-                            />
-                            <AnimatedBeam
-                                containerRef={containerRef}
-                                fromRef={div6Ref}
-                                toRef={div4Ref}
-                                reverse
-                            />
-                            <AnimatedBeam
-                                containerRef={containerRef}
-                                fromRef={div7Ref}
-                                toRef={div4Ref}
-                                curvature={75}
-                                endYOffset={10}
-                                reverse
-                            />
-                        </div>
-
-                        <div>
-                            <p className='grid-headtext'>
-                                Our passion for Coding
-                            </p>
-                            <p className='grid-subtext'>
-                                We love solving problems and building things through codes. We love to build websites with great user experiences. Coding isn't just our profession - it's our passion.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className='xl:col-span-1 xl:row-span-2'>
-                    <div className='grid-container flex w-full items-center justify-center'>
-                        <Image src={Grid4} alt='grid-4' className='w-[90%] md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top' />
-
-                        <div className='space-y-2'>
-                            <p className='grid-subtext text-center'>Contact Us</p>
-                            <div className='copy-container' onClick={handleCopy}>
-                                <Image src={hasCopied ? Tick : Copy} alt="copy" />
-                                <p className="lg:text-[20px] md:text-[16px] font-medium text-gray_gradient text-white">infoxenotech@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
-}
+const slugs = [
+    "typescript",
+    "javascript",
+    "dart",
+    "java",
+    "react",
+    "flutter",
+    "android",
+    "html5",
+    "css3",
+    "nodedotjs",
+    "express",
+    "nextdotjs",
+    "prisma",
+    "amazonaws",
+    "postgresql",
+    "firebase",
+    "nginx",
+    "vercel",
+    "testinglibrary",
+    "jest",
+    "cypress",
+    "docker",
+    "git",
+    "jira",
+    "github",
+    "gitlab",
+    "visualstudiocode",
+    "androidstudio",
+    "sonarqube",
+    "figma",
+];
 
 const Icons = {
     notion: () => (
@@ -606,5 +444,183 @@ const Icons = {
     ),
 };
 
-export default About
+const Bento = () => {
 
+    const images = slugs.map(
+        (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+    );
+
+    const containerRef = useRef<HTMLDivElement>(null);
+    const div1Ref = useRef<HTMLDivElement>(null);
+    const div2Ref = useRef<HTMLDivElement>(null);
+    const div3Ref = useRef<HTMLDivElement>(null);
+    const div4Ref = useRef<HTMLDivElement>(null);
+    const div5Ref = useRef<HTMLDivElement>(null);
+    const div6Ref = useRef<HTMLDivElement>(null);
+    const div7Ref = useRef<HTMLDivElement>(null);
+
+    return (
+        <div className='z-3 flex xl:h-[130vh] md:h-[250vh] w-full bg-[#1E1E1E] text-white justify-center items-center p-10 select-none'>
+            <div className='grid h-full w-full grid-cols-3 grid-rows-6 gap-4'>
+                <div className='bg-[#0E0E10]/30 rounded-xl relative row-span-3 col-span-1 flex justify-end items-center flex-col p-4 '>
+                    <div className='absolute -top-12 left-0 w-full h-full flex justify-start items-center'>
+                        <Image
+                            src={grid1}
+                            alt=''
+                            // fill= {true}
+                            width={420}
+                            height={150}
+                            className="mb-2 mt-10 ml-5" // Add margin to the image
+                        />
+                    </div>
+                    <div>
+                        <p className="text-2xl font-extrabold">Hi We&apos;re XenoTech</p>
+                        <p className="text-lg">
+                            We&lsquo;re a team of passionate developers, designers, and creators who are dedicated to making the web a better place.
+                        </p>
+                    </div>
+                </div>
+                <div className='bg-[#0E0E10]/30 rounded-xl row-span-3 col-span-1 '>
+                    {/* <div className='flex justify-center items-center w-full h-full flex-col'>
+                        <div className='flex w-full h-2/4 justify-center items-center'>
+                            <IconCloud images={images} />
+                        </div>
+                        <div className='m-5 mt-10 bottom-0'>
+                            <p className="font-extrabold text-2xl">Tech Stack
+                            </p>
+                            <p className="text-lg">I specialize in JavaScript, Java with focus on React & Next for Frontend and Node, Express & SpringBoot for Backend.</p>
+                        </div>
+                    </div> */}
+                    <div className='relative w-full h-full flex flex-col'>
+                        <div className='absolute w-full h-full flex justify-center items-start -top-10'>
+                            <IconCloud images={images} />
+                        </div>
+                        <div className='flex w-full h-full flex-col justify-end p-5'>
+                            <p className="font-extrabold text-2xl">Tech Stack
+                            </p>
+                            <p className="text-lg">I specialize in JavaScript, Java with focus on React & Next for Frontend and Node, Express & SpringBoot for Backend.</p>
+                        </div>
+                    </div>
+                </div>
+                <div className='bg-[#0E0E10]/30 rounded-xl row-span-4 col-span-1'>
+                    {/* <div className='flex justify-center items-center w-full h-full flex-col'>
+                        <div className='flex w-full h-2/4 justify-center items-center mt-6'>
+                            <IconCloud images={images} />
+                        </div>
+                        <div className='mt-10 p-4'>
+                            <p className="font-extrabold text-2xl">Tech Stack
+                            </p>
+                            <p className="text-lg font-light">I specialize in JavaScript, Java with focus on React & Next for Frontend and Node, Express & SpringBoot for Backend.</p>
+                        </div>
+                    </div> */}
+
+                    <div className='relative'>
+                        {/* <div className='absolute w-full h-full flex justify-center items-start -top-10 bg-green-50'>
+
+                        </div> */}
+                        <Globe className="absolute -mt-5" />
+                    </div>
+                    <div className='w-full h-full flex flex-col p-7 justify-end'>
+                        <p className='font-extrabold text-2xl'>We work remotely across most timezones</p>
+                        <p className='text-lg'>We work with clients from all around the world. I love to build websites with great user experiences.</p>
+                    </div>
+                </div>
+                <div className='bg-[#0E0E10]/30 rounded-xl row-span-3 col-span-2'>
+                    <div
+                        className="relative flex w-full h-[330px] items-center justify-center overflow-hidden bg-transparent p-10"
+                        ref={containerRef}
+                    >
+                        <div className="flex size-full max-h-[200px] max-w-lg flex-col items-stretch justify-between gap-10">
+                            <div className="flex flex-row items-center justify-between">
+                                <Circle ref={div1Ref}>
+                                    <Icons.googleDrive />
+                                </Circle>
+                                <Circle ref={div5Ref}>
+                                    <Icons.googleDocs />
+                                </Circle>
+                            </div>
+                            <div className="flex flex-row items-center justify-between">
+                                <Circle ref={div2Ref}>
+                                    <Icons.notion />
+                                </Circle>
+                                <Circle ref={div4Ref} className="size-16">
+                                    <Icons.openai />
+                                </Circle>
+                                <Circle ref={div6Ref}>
+                                    <Icons.zapier />
+                                </Circle>
+                            </div>
+                            <div className="flex flex-row items-center justify-between">
+                                <Circle ref={div3Ref}>
+                                    <Icons.whatsapp />
+                                </Circle>
+                                <Circle ref={div7Ref}>
+                                    <Icons.messenger />
+                                </Circle>
+                            </div>
+                        </div>
+
+                        <AnimatedBeam
+                            containerRef={containerRef}
+                            fromRef={div1Ref}
+                            toRef={div4Ref}
+                            curvature={-75}
+                            endYOffset={-10}
+                        />
+                        <AnimatedBeam
+                            containerRef={containerRef}
+                            fromRef={div2Ref}
+                            toRef={div4Ref}
+                        />
+                        <AnimatedBeam
+                            containerRef={containerRef}
+                            fromRef={div3Ref}
+                            toRef={div4Ref}
+                            curvature={75}
+                            endYOffset={10}
+                        />
+                        <AnimatedBeam
+                            containerRef={containerRef}
+                            fromRef={div5Ref}
+                            toRef={div4Ref}
+                            curvature={-75}
+                            endYOffset={-10}
+                            reverse
+                        />
+                        <AnimatedBeam
+                            containerRef={containerRef}
+                            fromRef={div6Ref}
+                            toRef={div4Ref}
+                            reverse
+                        />
+                        <AnimatedBeam
+                            containerRef={containerRef}
+                            fromRef={div7Ref}
+                            toRef={div4Ref}
+                            curvature={75}
+                            endYOffset={10}
+                            reverse
+                        />
+                    </div>
+                    <div className='mt-6 px-4'>
+                        <p className='font-extrabold text-2xl'>Our Passion for Innovation</p>
+                        <p className='text-xl'>Our team is dedicated to creating innovative solutions to everyday problems.</p>
+                    </div>
+                </div>
+                <div className='bg-[#0E0E10]/30 rounded-xl row-span-2 col-span-1 p-1 '>
+                    <div className='w-full h-2/3 '>
+                        <Image src={grid5} alt='' width={500} height={150} className='mb-4 px-12' />
+                    </div>
+                    <div className='p-4 flex items-center justify-center w-full flex-col'>
+                        <p className='font-extrabold text-2xl mb-2'>Contact Us</p>
+                        <p className='flex justify-center items-center text-lg gap-3'>
+                            <Copy /><span className='text-xl '>temp@gmail.com</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div >
+    )
+}
+
+export default Bento

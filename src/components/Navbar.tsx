@@ -5,8 +5,7 @@ import { HyperText } from '@/components/magicui/hyper-text';
 import { MagneticText } from './MagneticText';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Navbar = () => {
-    const [open, setOpen] = React.useState(false);
+const Navbar = ({open, setOpen}: {open: boolean, setOpen: React.Dispatch<React.SetStateAction<boolean>>}) => {
 
     const handleClick = () => {
         setOpen(!open);

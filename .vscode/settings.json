@@ -8,5 +8,6 @@
         "testinglibrary",
         "visualstudiocode",
         "Xeno"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }
